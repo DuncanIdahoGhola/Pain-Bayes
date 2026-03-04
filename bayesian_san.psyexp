@@ -116,8 +116,8 @@
         <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
       </RoutineSettingsComponent>
       <CodeComponent name="set_up_2" plugin="None">
-        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="import random " valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="import * as random from 'random';&amp;#10;" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="participant_id = expInfo['participant']&amp;#10;last_three_digits = participant_id[-3:]&amp;#10;&amp;#10;#we could use last_trhee_digits to counterbalance something if we wanted to here&amp;#10;from pathlib import Path&amp;#10;&amp;#10;directory = Path(__file__).parent&amp;#10;conditions_dir = directory / 'condition_files'&amp;#10;&amp;#10;cond_files = conditions_dir / f'{last_three_digits}_conditions.csv'&amp;#10;cond_file = str(cond_files)&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="import {Path} from 'pathlib';&amp;#10;participant_id = expInfo[&quot;participant&quot;];&amp;#10;last_three_digits = participant_id.slice((- 3));&amp;#10;directory = new Path(__file__).parent;&amp;#10;conditions_dir = (directory / &quot;condition_files&quot;);&amp;#10;cond_files = (conditions_dir / `${last_three_digits}_conditions.csv`);&amp;#10;cond_file = cond_files.toString();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
@@ -150,6 +150,23 @@
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
       </RoutineSettingsComponent>
+      <CodeComponent name="fix_code_timer" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="length_fix_timer = Math.random.randint(2, 3);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="length_fix_timer = random.randint(2, 3)" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="psychoJS.experiment.addData(&quot;length_fix_timer&quot;, length_fix_timer);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="thisExp.addData('length_fix_timer', length_fix_timer)" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="fix_code_timer" valType="code" updates="None" name="name"/>
+      </CodeComponent>
       <TextComponent name="fixation_cross" plugin="None">
         <Param val="white" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -170,9 +187,9 @@
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="2" valType="code" updates="constant" name="stopVal"/>
+        <Param val="$length_fix_timer" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="+" valType="str" updates="constant" name="text"/>
+        <Param val="+" valType="str" updates="set every repeat" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
