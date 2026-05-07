@@ -15,7 +15,7 @@ if not os.path.exists(output_folder):
 expected_vas_levels = [30, 70]
 expect_uncertainty_levels = ['low', 'high']
 sensory_uncertainty_levels = ['low', 'high', 'none']
-stim_intensity_levels = [30, 70]
+stim_intensity_levels = ['low', 'high']
 
 # --- Build FULL factorial design (24 conditions) ---
 factorial_conditions = list(itertools.product(
